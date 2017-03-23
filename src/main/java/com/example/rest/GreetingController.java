@@ -10,7 +10,7 @@ import com.example.rest.domain.Greeting;
 @RestController
 public class GreetingController {
 
-    private static final String template = "Hello, %s!";
+    private static final String template = "Hello, %s! Welcome to the secured area...";
     private final AtomicLong counter = new AtomicLong();
 
     @RequestMapping("/greeting")
