@@ -235,7 +235,7 @@ public class AdalSecurityFilter implements Filter {
 
     public void init(FilterConfig config) throws ServletException {
         clientId = "b01a5484-8176-4ea4-8fbb-10c86def6eea";
-        authority = "https://login.windows.net/";
+        authority = "https://sts.windows.net/6f844683-d7cd-4c64-8d8b-24b8dd78be1b/";
         tenant = "benjaminhoffmannkionims.onmicrosoft.com";
         clientSecret = "d9fjsadafmwefeniwefiidspoo";
     }
