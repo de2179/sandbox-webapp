@@ -10,12 +10,20 @@ import com.example.rest.domain.Greeting;
 @RestController
 public class GreetingController {
 
-    private static final String template = "Hello, %s! Welcome to the secured area...";
+    private static final String publicTemplate = "Hello, %s! Welcome to the public area...";
+    private static final String secureTemplate = "Hello, %s! Welcome to the secured area...";
     private final AtomicLong counter = new AtomicLong();
 
-    @RequestMapping("/greeting")
-    public Greeting greeting(@RequestParam(value="name", defaultValue="World User") String name) {
+    @RequestMapping("/public")
+    public Greeting publicGreeting(@RequestParam(value="name", defaultValue="World User") String name) {
+    	return new Greeting(counter.incrementAndGet(),
+                String.format(secureTemplate, name));
+    }
+    
+    
+    @RequestMapping("/secure")
+    public Greeting secureGreeting(@RequestParam(value="name", defaultValue="World User") String name) {
         return new Greeting(counter.incrementAndGet(),
-                            String.format(template, name));
+                            String.format(secureTemplate, name));
     }
 }
