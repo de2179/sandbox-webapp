@@ -4,6 +4,7 @@
 package com.example.conf;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -17,30 +18,28 @@ import com.example.security.AdalSecurityFilter;
  * @author de2179
  *
  */
-@Configuration()
+@Configuration
 @EnableWebSecurity
+@EnableOAuth2Sso
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	    @Override
 	    protected void configure(HttpSecurity http) throws Exception {
 	        http
 	            .authorizeRequests()
-	            	.antMatchers("/","/secure/**").authenticated()
+	            	.antMatchers("/","/secure").authenticated()
 	            	.anyRequest().permitAll()
 	                .and()
 	            .logout()
-	                .permitAll();
+	                .permitAll()
+	                .and()
+	            //.csrf().disable()
+	            ;
 	    }
 
-	    @Bean
-	    public AdalSecurityFilter adalSecurityFilter() {
-	      return new AdalSecurityFilter();
-	    }
+//	    @Bean
+//	    public AdalSecurityFilter adalSecurityFilter() {
+//	      return new AdalSecurityFilter();
+//	    }
 
-	    @Autowired
-	    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-	        auth
-	            .inMemoryAuthentication()
-	                .withUser("user").password("password").roles("USER");
-	    }
 	
 }
