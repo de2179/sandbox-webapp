@@ -1,0 +1,11 @@
+azure:
+  client:
+    clientId: b01a5484-8176-4ea4-8fbb-10c86def6eea
+    clientSecret: d9fjsadafmwefeniwefiidspoo
+    accessTokenUri: https://login.microsoftonline.com/benjaminhoffmannkionims.onmicrosoft.com/oauth2/token
+    userAuthorizationUri: https://login.microsoftonline.com/benjaminhoffmannkionims.onmicrosoft.com/oauth2/authorize
+    tokenName: access_token
+    authenticationScheme: query
+    clientAuthenticationScheme: form
+  resource:
+    userInfoUri: https://graph.microsoftonline.com/me

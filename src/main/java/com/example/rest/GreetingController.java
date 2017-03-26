@@ -17,7 +17,7 @@ public class GreetingController {
     @RequestMapping("/public")
     public Greeting publicGreeting(@RequestParam(value="name", defaultValue="World User") String name) {
     	return new Greeting(counter.incrementAndGet(),
-                String.format(secureTemplate, name));
+                String.format(publicTemplate, name));
     }
     
     
